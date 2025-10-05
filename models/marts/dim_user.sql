@@ -1,5 +1,3 @@
-{{ config(materialized='view') }}
-
 select
   user_id,
   name,

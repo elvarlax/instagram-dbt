@@ -1,5 +1,3 @@
-{{ config(materialized='view') }}
-
 select
   f.followee_user_id,
   f.follower_user_id,

@@ -9,18 +9,22 @@ seed-paths: ["seeds"]
 macro-paths: ["macros"]
 
 seeds:
-  +database: null
+  +database: instagram
 
 models:
-  +database: null
+  +database: instagram
   +materialized: view
+
   instagram_dbt:
     staging:
       +schema: staging
-      +tags: [staging]
+      +materialized: view
     intermediate:
       +schema: intermediate
-      +tags: [intermediate]
+      +materialized: view
     marts:
       +schema: marts
-      +tags: [marts]
+      +materialized: table
+    analysis:
+      +schema: analysis
+      +materialized: view

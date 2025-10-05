@@ -1,5 +1,3 @@
-{{ config(materialized='view') }}
-
 with ranked as (
   select
     user_id              as followee_user_id,

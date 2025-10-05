@@ -1,5 +1,3 @@
-{{ config(materialized='view') }}
-
 select
   c.comment_id,                      -- event key
   c.user_id  as commenter_user_id,   -- who commented

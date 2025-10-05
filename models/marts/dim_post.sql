@@ -1,5 +1,3 @@
-{{ config(materialized='view') }}
-
 select
   post_id,
   user_id,

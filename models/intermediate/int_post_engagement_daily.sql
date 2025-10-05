@@ -1,5 +1,3 @@
-{{ config(materialized='view') }}
-
 with likes as (
   select
     post_id,

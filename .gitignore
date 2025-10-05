@@ -1,6 +1,21 @@
+# Python venv
 .venv/
+
+# DuckDB database files & binary
 *.duckdb
+duckdb.exe
+
+# dbt build artifacts
 target/
 dbt_packages/
 logs/
-duckdb.exe
+
+# Scripts (large local generation, not needed in repo)
+scripts/
+
+# Keep small demo CSVs checked in
+!seeds/users.csv
+!seeds/posts.csv
+!seeds/likes.csv
+!seeds/comments.csv
+!seeds/followers.csv

@@ -1,5 +1,3 @@
-{{ config(materialized='view') }}
-
 select
   i.post_id,
   d.date_id,

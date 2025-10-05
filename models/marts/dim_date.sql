@@ -1,5 +1,3 @@
-{{ config(materialized='view') }}
-
 with bounds as (
   select
     min(d) as min_d,

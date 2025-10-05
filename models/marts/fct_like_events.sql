@@ -1,5 +1,3 @@
-{{ config(materialized='view') }}
-
 select
   l.like_id,                         -- event key
   l.user_id  as liker_user_id,       -- who liked
