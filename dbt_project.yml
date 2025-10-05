@@ -1,0 +1,26 @@
+name: instagram_dbt
+version: 1.0.0
+config-version: 2
+
+profile: instagram_dbt
+
+model-paths: ["models"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+
+seeds:
+  +database: null
+
+models:
+  +database: null
+  +materialized: view
+  instagram_dbt:
+    staging:
+      +schema: staging
+      +tags: [staging]
+    intermediate:
+      +schema: intermediate
+      +tags: [intermediate]
+    marts:
+      +schema: marts
+      +tags: [marts]

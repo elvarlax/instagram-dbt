@@ -1,0 +1,14 @@
+version: 2
+
+models:
+  - name: int_followers_current
+    tests:
+      - not_null: { arguments: { column_name: followee_user_id } }
+      - not_null: { arguments: { column_name: follower_user_id } }
+      - unique:   { arguments: { column_name: "(followee_user_id, follower_user_id)" } }
+
+  - name: int_post_engagement_daily
+    tests:
+      - not_null: { arguments: { column_name: post_id } }
+      - not_null: { arguments: { column_name: date_day } }
+      - unique:   { arguments: { column_name: "(post_id, date_day)" } }

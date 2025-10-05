@@ -1,0 +1,54 @@
+version: 2
+
+seeds:
+  - name: users
+    config:
+      schema: seed
+      quote_columns: false
+      column_types:
+        user_id: bigint
+        name: varchar
+        email: varchar
+        phone_number: varchar
+
+  - name: posts
+    config:
+      schema: seed
+      quote_columns: false
+      column_types:
+        post_id: bigint
+        user_id: bigint
+        caption: varchar
+        image_url: varchar
+        created_at: timestamp
+
+  - name: comments
+    config:
+      schema: seed
+      quote_columns: false
+      column_types:
+        comment_id: bigint
+        post_id: bigint
+        user_id: bigint
+        comment_text: varchar
+        created_at: timestamp
+
+  - name: likes
+    config:
+      schema: seed
+      quote_columns: false
+      column_types:
+        like_id: bigint
+        post_id: bigint
+        user_id: bigint
+        created_at: timestamp
+
+  - name: followers
+    config:
+      schema: seed
+      quote_columns: false
+      column_types:
+        follower_id: bigint
+        user_id: bigint
+        follower_user_id: bigint
+        created_at: timestamp

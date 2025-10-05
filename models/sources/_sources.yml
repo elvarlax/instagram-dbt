@@ -1,0 +1,11 @@
+version: 2
+sources:
+  - name: seed
+    database: instagram
+    schema: seed
+    tables:
+      - name: users
+      - name: posts
+      - name: comments
+      - name: likes
+      - name: followers

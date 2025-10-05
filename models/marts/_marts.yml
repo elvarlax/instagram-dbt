@@ -1,0 +1,40 @@
+version: 2
+
+models:
+  - name: fct_like_events
+    tests:
+      - not_null: { arguments: { column_name: like_id } }
+      - unique:   { arguments: { column_name: like_id } }
+      - not_null: { arguments: { column_name: post_id } }
+      - not_null: { arguments: { column_name: date_id } }
+      - not_null: { arguments: { column_name: liker_user_id } }
+      - relationships:
+          arguments: { to: ref('dim_date'), field: date_id, column_name: date_id }
+      - relationships:
+          arguments: { to: ref('dim_post'), field: post_id, column_name: post_id }
+      - relationships:
+          arguments: { to: ref('dim_user'), field: user_id, column_name: liker_user_id }
+
+  - name: fct_comment_events
+    tests:
+      - not_null: { arguments: { column_name: comment_id } }
+      - unique:   { arguments: { column_name: comment_id } }
+      - not_null: { arguments: { column_name: post_id } }
+      - not_null: { arguments: { column_name: date_id } }
+      - not_null: { arguments: { column_name: commenter_user_id } }
+      - relationships:
+          arguments: { to: ref('dim_date'), field: date_id, column_name: date_id }
+      - relationships:
+          arguments: { to: ref('dim_post'), field: post_id, column_name: post_id }
+      - relationships:
+          arguments: { to: ref('dim_user'), field: user_id, column_name: commenter_user_id }
+
+  - name: fct_post_engagement_daily
+    tests:
+      - unique:   { arguments: { column_name: "(post_id, date_id)" } }
+      - not_null: { arguments: { column_name: post_id } }
+      - not_null: { arguments: { column_name: date_id } }
+      - relationships:
+          arguments: { to: ref('dim_date'), field: date_id, column_name: date_id }
+      - relationships:
+          arguments: { to: ref('dim_post'), field: post_id, column_name: post_id }

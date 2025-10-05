@@ -1,0 +1,70 @@
+version: 2
+
+models:
+  - name: stg_users
+    tests:
+      - unique:
+          arguments:
+            column_name: user_id
+      - not_null:
+          arguments:
+            column_name: user_id
+
+  - name: stg_posts
+    tests:
+      - unique:
+          arguments:
+            column_name: post_id
+      - not_null:
+          arguments:
+            column_name: post_id
+      - relationships:
+          arguments:
+            to: ref('stg_users')
+            field: user_id
+            column_name: user_id
+
+  - name: stg_comments
+    tests:
+      - unique:
+          arguments:
+            column_name: comment_id
+      - relationships:
+          arguments:
+            to: ref('stg_users')
+            field: user_id
+            column_name: user_id
+      - relationships:
+          arguments:
+            to: ref('stg_posts')
+            field: post_id
+            column_name: post_id
+
+  - name: stg_likes
+    tests:
+      - unique:
+          arguments:
+            column_name: like_id
+      - relationships:
+          arguments:
+            to: ref('stg_users')
+            field: user_id
+            column_name: user_id
+      - relationships:
+          arguments:
+            to: ref('stg_posts')
+            field: post_id
+            column_name: post_id
+
+  - name: stg_followers
+    tests:
+      - relationships:
+          arguments:
+            to: ref('stg_users')
+            field: user_id
+            column_name: user_id
+      - relationships:
+          arguments:
+            to: ref('stg_users')
+            field: user_id
+            column_name: follower_user_id
