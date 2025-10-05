@@ -1,11 +1,75 @@
 version: 2
+
 sources:
   - name: seed
-    database: instagram
     schema: seed
+    description: "Seeded CSVs that simulate raw Instagram entities."
     tables:
       - name: users
+        description: "Raw users from seed CSV."
+        columns:
+          - name: user_id
+            description: "Primary key of the user."
+            tests: [not_null, unique]
+          - name: name
+            description: "Display name."
+          - name: email
+            description: "Email address (not necessarily unique)."
+          - name: phone_number
+            description: "Optional phone."
+
       - name: posts
+        description: "Raw posts from seed CSV."
+        columns:
+          - name: post_id
+            description: "Primary key of the post."
+            tests: [not_null, unique]
+          - name: user_id
+            description: "Authoring user_id."
+          - name: caption
+            description: "Post caption."
+          - name: image_url
+            description: "Reference URL."
+          - name: created_at
+            description: "Creation timestamp."
+
       - name: comments
+        description: "Raw comments from seed CSV."
+        columns:
+          - name: comment_id
+            description: "Primary key of the comment."
+            tests: [not_null, unique]
+          - name: post_id
+            description: "FK to posts."
+          - name: user_id
+            description: "Commenting user_id."
+          - name: comment_text
+            description: "Free-text comment."
+          - name: created_at
+            description: "Creation timestamp."
+
       - name: likes
+        description: "Raw likes from seed CSV."
+        columns:
+          - name: like_id
+            description: "Primary key of the like."
+            tests: [not_null, unique]
+          - name: post_id
+            description: "FK to posts."
+          - name: user_id
+            description: "Liker user_id."
+          - name: created_at
+            description: "Creation timestamp."
+
       - name: followers
+        description: "Raw follower edges from seed CSV."
+        columns:
+          - name: follower_id
+            description: "Primary key of the follower row."
+            tests: [not_null, unique]
+          - name: user_id
+            description: "Followee (the person being followed)."
+          - name: follower_user_id
+            description: "Follower (the person who follows)."
+          - name: created_at
+            description: "Creation timestamp."

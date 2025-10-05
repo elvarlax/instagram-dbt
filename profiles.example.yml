@@ -1,0 +1,8 @@
+instagram_dbt:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: ./instagram.duckdb   # relative path, dbt will create if missing
+      schema: instagram          # default schema (staging/intermediate/marts override this)
+      threads: 4

@@ -13,6 +13,11 @@ logs/
 # Scripts (large local generation, not needed in repo)
 scripts/
 
+# OS/editor junk
+.DS_Store
+*.swp
+*.tmp
+
 # Keep small demo CSVs checked in
 !seeds/users.csv
 !seeds/posts.csv
